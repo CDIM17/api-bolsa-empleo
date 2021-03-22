@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\VacanteController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\UsuarioController;
 
 
 /*
@@ -64,6 +65,11 @@ Route::delete("categorias",[CategoriaController::class,'destroy']);
 
 
 //Usuarios
+Route::get("usuarios/{id?}",[UsuarioController::class,'index']);
+Route::post("usuarios",[UsuarioController::class,'store']);
+Route::put("usuarios",[UsuarioController::class,'update']);
+Route::delete("usuarios",[UsuarioController::class,'destroy']);
+
 
 //AUTH
 
