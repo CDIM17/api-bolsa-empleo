@@ -10,7 +10,8 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\VacanteController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\UsuarioController;
-
+use App\Http\Controllers\CiudadesController;
+use App\Http\Controllers\PaisesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,5 +75,8 @@ Route::delete("usuarios",[UsuarioController::class,'destroy']);
 //AUTH
 
 //Ciudades
+Route::get("ciudades/{id?}",[CiudadesController::class,'index']);
+Route::get("ciudades/pais/{pais}",[CiudadesController::class,'ciudades_pais']);
 
 //Paises
+Route::get("paises/{id?}",[PaisesController::class,'index']);
