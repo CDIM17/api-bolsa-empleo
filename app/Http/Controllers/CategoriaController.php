@@ -37,8 +37,7 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         $categoria = new Categoria();
-        $categoria->name=$request->name;
-        $categoria->member_id=$request->member_id;
+        $categoria->Nombre=$request->Nombre;
         $result = $categoria->save();
 
         if($result)
@@ -80,9 +79,24 @@ class CategoriaController extends Controller
      * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categoria $categoria)
+    public function update(Request $request)
     {
         //
+        $categoria = Categoria::find($request->ID_Categoria);
+        $categoria->Nombre = $request->Nombre;
+
+        $result = $categoria->save();
+
+        if($result)
+        {
+            return ["result"=>"data have been updated"];
+        }
+        else
+        {
+            return ["result"=>"Operation Failed"];
+        }
+
+        return ["result"=>"Data is Updated"];
     }
 
     /**
@@ -91,8 +105,18 @@ class CategoriaController extends Controller
      * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categoria $categoria)
+    public function destroy(Request $request)
     {
-        //
+        $categoria = Categoria::find($request->ID_Categoria);
+        $result = $categoria->delete();
+
+        if($result)
+        {
+            return ["result"=>"record has been deleted ".$categoria->ID_Categoria];
+        }
+        else
+        {
+            return ["result"=>"Delete Operation have failed"];
+        }
     }
 }

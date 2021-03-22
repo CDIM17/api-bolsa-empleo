@@ -8,7 +8,10 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\VacanteController;
-
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\CiudadesController;
+use App\Http\Controllers\PaisesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,16 +59,24 @@ Route::put("vacantes",[VacanteController::class,'update']);
 Route::delete("vacantes",[VacanteController::class,'destroy']);
 
 //Categorias
-Route::get("categorias/{id?}",[VacanteController::class,'index']);
-Route::post("categorias",[VacanteController::class,'store']);
-Route::put("categorias",[VacanteController::class,'update']);
-Route::delete("categorias",[VacanteController::class,'destroy']);
+Route::get("categorias/{id?}",[CategoriaController::class,'index']);
+Route::post("categorias",[CategoriaController::class,'store']);
+Route::put("categorias",[CategoriaController::class,'update']);
+Route::delete("categorias",[CategoriaController::class,'destroy']);
 
 
 //Usuarios
+Route::get("usuarios/{id?}",[UsuarioController::class,'index']);
+Route::post("usuarios",[UsuarioController::class,'store']);
+Route::put("usuarios",[UsuarioController::class,'update']);
+Route::delete("usuarios",[UsuarioController::class,'destroy']);
+
 
 //AUTH
 
 //Ciudades
+Route::get("ciudades/{id?}",[CiudadesController::class,'index']);
+Route::get("ciudades/pais/{pais}",[CiudadesController::class,'ciudades_pais']);
 
 //Paises
+Route::get("paises/{id?}",[PaisesController::class,'index']);
