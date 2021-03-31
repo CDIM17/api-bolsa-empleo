@@ -7,6 +7,32 @@ use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
+    function login(Request $request)
+    {
+        $user= Usuario::where('Usuario', $request->Usuario)->first();
+
+        if($user)
+        {
+            $user= Usuario::where('Usuario', $request->Usuario)->
+                            where('Contrasena',$request->Contrasena)->first();
+            if($user)
+            {
+                return response(['mensaje' => 'Ok'],200); 
+            }
+            else
+            {
+                return response(['mensaje' => 'Password Incorrect'],404);
+            }
+        }
+        else
+        {
+            return response([
+                'message' => ['These credentials do not match our records.']
+            ], 404);
+        }
+
+    }
+
     /**
      * Display a listing of the resource.
      *

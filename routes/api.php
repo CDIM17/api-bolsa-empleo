@@ -73,6 +73,7 @@ Route::delete("usuarios",[UsuarioController::class,'destroy']);
 
 
 //AUTH
+Route::post("auth",[UsuarioController::class,'login']);
 
 //Ciudades
 Route::get("ciudades/{id?}",[CiudadesController::class,'index']);
